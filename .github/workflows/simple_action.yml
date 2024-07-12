@@ -30,4 +30,4 @@ jobs:
 
       - name: Run Node
         run: |
-          node main.js  >> $GITHUB_STEP_SUMMARY
+          node main.js
