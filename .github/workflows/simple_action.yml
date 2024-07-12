@@ -1,4 +1,4 @@
-name: Doc-AI Test Automation (Manual)
+name: simple_action
 on:
   workflow_dispatch:
     inputs:
@@ -6,14 +6,15 @@ on:
         required: true
         type: string
         description: 'The URL of the target environment against which the tests are run (without suffix "/")'
-
+        
+jobs:
   manual_run:
-    runs-on: cypress
+    runs-on: ubuntu-latest
     name: Manual Run
     steps:   
-    # Checkout code in omnius-qa-doc-ai-automation repository
+    # Checkout code in this repository
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.ref }}
       
