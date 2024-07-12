@@ -1,0 +1,32 @@
+name: Doc-AI Test Automation (Manual)
+on:
+  workflow_dispatch:
+    inputs:
+      base_url:
+        required: true
+        type: string
+        description: 'The URL of the target environment against which the tests are run (without suffix "/")'
+
+  manual_run:
+    runs-on: cypress
+    name: Manual Run
+    steps:   
+    # Checkout code in omnius-qa-doc-ai-automation repository
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
+      
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.17.1'
+    
+    # Log Environment details
+      - name: User Input Details
+        run: |
+          echo "running on environment ${{ github.event.inputs.base_url }} from branch ${{ github.ref }}"
+
+      - name: Run Node
+        run: |
+          node main.js
