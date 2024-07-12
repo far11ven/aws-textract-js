@@ -29,4 +29,4 @@ on:
 
       - name: Run Node
         run: |
-          node main.js
+          node main.js  >> $GITHUB_STEP_SUMMARY
